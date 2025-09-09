@@ -1,6 +1,11 @@
-/* ===========================
-   Simple beginner-friendly CSS
-   =========================== */
+
+.open-sans-main {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
 
 /* Basic reset */
 * { box-sizing: border-box; }
@@ -75,7 +80,7 @@ body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #123; backgr
 .main-section { padding:20px 0 40px; }
 .section-title { text-align:center; margin:10px 0 20px; font-size:22px; }
 
-/* layout columns: categories / plants grid / cart */
+/* cart */
 .layout {
   max-width:1100px; margin:0 auto; display:grid;
   grid-template-columns: 200px 1fr 260px; gap:20px; padding:0 16px;

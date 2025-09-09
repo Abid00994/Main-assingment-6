@@ -29,16 +29,15 @@ const modalPrice = document.getElementById("modalPrice");
 // state
 let heartCount = 0;
 let copyCount = 0;
-let coins = 100; // displayed, not heavily used
-let cart = {}; // { name: { price, qty } }
+let coins = 100; 
+let cart = {}; 
 
 // helper: show / hide spinner
 function showSpinner(){ spinner.style.display = "block"; }
 function hideSpinner(){ spinner.style.display = "none"; }
 
-// helper: safe parse API response fields (APIs sometimes differ)
+
 function getPlantsFromResponse(res){
-  // Try common places
   if (!res) return [];
   if (Array.isArray(res)) return res;
   if (res.plants && Array.isArray(res.plants)) return res.plants;
@@ -64,7 +63,7 @@ function renderCategories(categories){
   categories.forEach(cat => {
     const li = document.createElement("li");
     
-    // Convert to Title Case: "all trees" becomes "All Trees"
+    // Convert to Title Case: "all trees"
     li.textContent = cat.category
       .toLowerCase()
       .split(' ')
@@ -100,21 +99,7 @@ function loadAllPlants(){
     .finally(()=> hideSpinner());
 }
 
-// load plants by category
-function loadPlantsByCategory(id){
-  showSpinner();
-  fetch(API.byCategory(id))
-    .then(r => r.json())
-    .then(data => {
-      const plants = getPlantsFromResponse(data.plants || data.data || data);
-      renderPlants(plants);
-    })
-    .catch(err => {
-      plantsGrid.innerHTML = "<p style='padding:20px;color:#b00;'>Failed to load plants for category.</p>";
-      console.error(err);
-    })
-    .finally(()=> hideSpinner());
-}
+
 
 // render plant cards
 function renderPlants(plants){
@@ -201,27 +186,7 @@ function clearCart(){
   renderCart();
 }
 
-// copy name to clipboard (simple)
-function copyName(name){
-  // navigator.clipboard might not be available in older browsers - fallback to prompt
-  if (navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(name).then(() => {
-      copyCount += 1;
-      copyCountEl.textContent = copyCount;
-      alert("Copied: " + name);
-    }).catch(()=> {
-      prompt("Copy this:", name);
-    });
-  } else {
-    prompt("Copy this:", name);
-  }
-}
 
-// heart favorite
-function addHeart(){
-  heartCount += 1;
-  heartCountEl.textContent = heartCount;
-}
 
 // DETAILS modal (fetch plant detail by id)
 function showPlantDetail(id){
