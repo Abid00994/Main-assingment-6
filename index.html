@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Green Earth - Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <span>Green Earth</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="actions">
+      <button class="donate-btn">Plant a Tree</button>
+    </div>
+  </nav>
+
+
+
+  <!-- HERO (height 350px) -->
+  <header class="hero">
+    <!-- left plant image -->
+    <img src="assets/hero-leaf1.png" alt="" class="plant plant-left">
+    <div class="hero-content">
+      <h1>Plant a Tree, Grow a Future</h1>
+      <p class="hero-slogan">Join our mission to plant 1 million trees and make the Earth greener for future
+        generations.</p>
+      <button class="main-but" id="copyCount">Get Involved</button>
+    </div>
+    <!-- right plant image -->
+    <img src="assets/hero-leaf2.png" alt="" class="plant plant-right">
+  </header>
+
+  <!-- MAIN: Trees Section -->
+  <main class="main-section" id="trees">
+    <h2 class="section-title">Choose Your Trees</h2>
+
+    <div class="layout">
+      <!-- Categories -->
+      <aside class="categories">
+        <h3>Categories</h3>
+        <ul id="categoriesList">
+          <!-- "All Trees" default item -->
+          <li class="category-item active" data-id="all">All Trees</li>
+        </ul>
+      </aside>
+
+      <!-- Plants Grid -->
+      <section class="plants-area">
+        <div id="spinner" class="spinner" aria-hidden="true"></div>
+        <div id="plantsGrid" class="plants-grid" aria-live="polite">
+          <!-- cards will be inserted here -->
+        </div>
+      </section>
+
+      <!-- Cart -->
+      <aside class="cart">
+        <h3>Your Cart</h3>
+        <ul id="cartItems" class="cart-items">
+        </ul>
+
+        <div class="cart-actions">
+          <button id="clearCart" class="small-btn">Clear Cart</button>
+          <div class="cart-total">Total: <span id="cartTotal">0৳</span></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="about-left">
+      <img src="https://images.unsplash.com/photo-1687106358396-20daadef9e36?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bGl0dGxlJTIwcGxhbnR8ZW58MHx8MHx8fDA%3D" alt="plant" class="about-image">
+    </div>
+    <div class="about-right">
+      <p>
+        Green Earth is a global reforestation initiative dedicated to fighting climate change.
+        Since our start, we've planted thousands of trees worldwide. By joining our campaign, you help restore forests,
+        create habitats for wildlife, and combat global warming.
+      </p>
+      <ul>
+        <li>Restoration of natural habitats</li>
+        <li>Improvement of air quality</li>
+        <li>Support for local communities</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section class="impact">
+    <h3>Our Impact</h3>
+    <div class="impact-cards">
+      <div class="impact-card"><strong>500K+</strong><small>Trees Planted</small></div>
+      <div class="impact-card"><strong>120+</strong><small>Communities</small></div>
+      <div class="impact-card"><strong>30+</strong><small>Countries</small></div>
+    </div>
+  </section>
+
+  <!-- DONATE / FORM -->
+  <section class="donate">
+    <h3>Plant a Tree Today</h3>
+    <form id="donateForm" class="donate-form">
+      <input type="text" id="donorName" placeholder="Your Name" required>
+      <input type="email" id="donorEmail" placeholder="Your Email Address" required>
+      <select id="donorCount" required>
+        <option value="">Number of Trees</option>
+        <option value="1">1 Tree</option>
+        <option value="5">5 Trees</option>
+        <option value="10">10 Trees</option>
+      </select>
+      <button type="submit" class="donate-btn">Donate Now</button>
+    </form>
+  </section>
+
+  <!-- SIMPLE FOOTER -->
+  <footer class="footer">
+    <p>© <span id="year"></span> Green Earth — Plant today for a better tomorrow.</p>
+  </footer>
+
+  <!-- MODAL for Plant Details (simple) -->
+  <div id="detailModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button id="closeModal" class="close-btn">✕</button>
+      <h3 id="modalName">Plant Name</h3>
+      <img id="modalImage" src="" alt="" class="modal-img">
+      <p id="modalDesc"></p>
+      <p><strong>Price: </strong><span id="modalPrice"></span>৳</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
