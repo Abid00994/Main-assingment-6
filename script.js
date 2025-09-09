@@ -63,7 +63,7 @@ function renderCategories(categories){
   categories.forEach(cat => {
     const li = document.createElement("li");
     
-    // Convert to Title Case: "all trees"
+    // Convert to Title Case: "all trees" becomes "All Trees"
     li.textContent = cat.category
       .toLowerCase()
       .split(' ')
@@ -99,7 +99,21 @@ function loadAllPlants(){
     .finally(()=> hideSpinner());
 }
 
-
+// load plants by category
+function loadPlantsByCategory(id){
+  showSpinner();
+  fetch(API.byCategory(id))
+    .then(r => r.json())
+    .then(data => {
+      const plants = getPlantsFromResponse(data.plants || data.data || data);
+      renderPlants(plants);
+    })
+    .catch(err => {
+      plantsGrid.innerHTML = "<p style='padding:20px;color:#b00;'>Failed to load plants for category.</p>";
+      console.error(err);
+    })
+    .finally(()=> hideSpinner());
+}
 
 // render plant cards
 function renderPlants(plants){
@@ -185,6 +199,7 @@ function clearCart(){
   cart = {};
   renderCart();
 }
+
 
 
 
